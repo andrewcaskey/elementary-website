@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    container:
+      image: elementary/docker:next-unstable
+    
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install Dependencies
+      run: |
+        apt update
+        apt install -y librsvg2-bin meson x11-apps
+    - name: Build
+      run: |
+        meson build
+        ninja -C build install

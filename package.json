@@ -1,0 +1,56 @@
+{
+  "name": "mvp",
+  "type": "module",
+  "version": "0.4.0",
+  "engines": {
+    "node": ">=14.16"
+  },
+  "description": "The elementary.io Website http://elementary.io",
+  "dependencies": {
+    "@babel/preset-env": "^7.20.2",
+    "babel-loader": "^9.1.2",
+    "core-js": "^3.29.0",
+    "cssnano": "^5.1.15",
+    "glob": "^8.1.0",
+    "gulp": "^4.0.2",
+    "gulp-cached": "^1.1.1",
+    "gulp-changed": "^4.0.3",
+    "gulp-imagemin": "^8.0.0",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-rev": "^10.0.0",
+    "postcss-preset-env": "^8.0.1",
+    "scriptjs": "^2.5.9",
+    "webpack": "^5.75.0",
+    "webpack-manifest-plugin": "^5.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.35.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^15.6.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "stylelint": "^15.2.0",
+    "stylelint-config-recommended": "^10.0.1"
+  },
+  "scripts": {
+    "install:submodule": "git submodule init && git submodule update --force --rebase",
+    "install:composer": "cd _backend && composer install",
+    "postinstall": "npm run install:submodule && npm run install:composer",
+    "lint": "sh _tests/css.sh && sh _tests/javascript.sh && sh _tests/php.sh",
+    "build": "gulp",
+    "start": "php -S 0.0.0.0:8000 router.php",
+    "watch": "gulp watch"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementary/website.git"
+  },
+  "author": "elementary",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elementary/website/issues"
+  },
+  "homepage": "https://github.com/elementary/website#readme"
+}
